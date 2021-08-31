@@ -1,0 +1,25 @@
+pragma solidity 0.5.1;
+
+//to call a function from one contract to other we need two things
+// 1. we need interfce of other contract break (if the contract are in the same file we just need tor reference)
+// 2. We need the address of B for that we need to create a variable and a function 
+
+import 'ContractB.sol';
+
+contract A{
+    address addressB; 
+    
+    //first we deploy B
+    //then we will deploy A
+    
+    
+    function setAddressB(address _addressB) external {
+        addressB= _addressB;
+    }
+    
+    function callHelloWorld() external view returns(string memory) 
+    InterfaceB b = InterfaceB(addressB);
+        return b.helloWorld();
+    }
+}
+

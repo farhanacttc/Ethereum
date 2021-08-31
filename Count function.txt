@@ -1,0 +1,36 @@
+pragma solidity 0.5.1;
+
+contract Counter {
+    uint public count ; /*this value will be stored on a Blockchain */  
+    
+    event Increment(uint value); /* events are created so that anyone can subscribe to this event, 
+                                    anyone can listen to this */  
+    event Decrement(uint value);
+    
+    
+    function getCount() view public returns (uint) {
+        return count; 
+    }
+    
+    constructor() public {
+        count  = 0;                 /* the constructor starts to run whenever the smart contract
+                                    is initialized or when a smart contract is created 
+                                    what count=0 means that the detfault value of count is set to zero
+                                    or we can set uint count=0 as a more simple form */
+    }
+    
+    function increment() public {         /* function keyword and name of the function 
+                                            other thing is public which add visibility that means
+                                            this can be called outside of this contract */
+        count += 1; 
+        emit Increment(count);
+    
+    }
+        
+    function decrement() public { 
+        count -=  1;
+        emit Decrement(count);
+    }
+}
+
+
